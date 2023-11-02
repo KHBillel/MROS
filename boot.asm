@@ -20,7 +20,7 @@
 %include 'print.asm'
 %include 'cls.asm'
 msg: db "Bismillah", 0
-auth: db "MROS by: Billel Kh", 0
+auth: db "MROS by: BibalC", 0
 cmd_buffer: times 256 - ( $ - $$ ) db 0 ; buffer of 256 zeros
 
 times 510 -( $ - $$ ) db 0 ; Pad the boot sector out with zeros
