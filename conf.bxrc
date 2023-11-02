@@ -1,0 +1,6 @@
+romimage: file=$BXSHARE/BIOS-bochs-latest
+megs: 32
+floppya: 1_44=floppy.img, status=inserted
+boot: a
+keyboard: type=at
+log: bochsout.txt
