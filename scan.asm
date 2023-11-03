@@ -7,8 +7,13 @@ __scan_byte:
 
     cmp al, 0x0d
     je __end_input
+    
     cmp al, 0x08
     jne __print_s_char
+
+    cmp si, 0x0000
+    je __scan_byte
+
     mov ah, 0x0e
     int 0x10
 
@@ -18,6 +23,10 @@ __scan_byte:
 
     mov al, 0x08
     dec si
+    mov ah, 0x0e
+    int 0x10
+    jmp __scan_byte
+
 __print_s_char:
     mov ah, 0x0e
     int 0x10

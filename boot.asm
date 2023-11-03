@@ -4,15 +4,21 @@
     call _cls
 
     mov bx, msg
-    call _print_func
+    call _println
     
     mov bx, auth
-    call _print_func
+    call _println
+
+cmd_loop:
+    mov bx, prmpt_msg
+    call _print
 
     mov bx, cmd_buffer
     call _scan_input
 
-    call _print_func
+    mov bx, cmd_buffer
+    call _println
+
     hlt
     jmp $
 
@@ -20,8 +26,9 @@
 %include 'print.asm'
 %include 'cls.asm'
 msg: db "Bismillah", 0
-auth: db "MROS by: BibalC", 0
+auth: db "MROS by: BibalC", 0x0d, 0x0a, 0
 cmd_buffer: times 256 - ( $ - $$ ) db 0 ; buffer of 256 zeros
+prmpt_msg: db "MROS (REAL MODE) >",0
 
 times 510 -( $ - $$ ) db 0 ; Pad the boot sector out with zeros
 dw 0xaa55 ; Last two bytes form the magic number ,
